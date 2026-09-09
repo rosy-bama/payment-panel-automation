@@ -1,0 +1,21 @@
+{
+  "name": "payment-panel-automation",
+  "version": "0.1.0",
+  "description": "Playwright + TypeScript automation suite for the Ejara Payment Panel (web). Built without a written spec; see docs/inferred-spec.md for what is confirmed vs. inferred from exploration.",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:auth": "playwright test tests/auth",
+    "report": "playwright show-report",
+    "codegen": "playwright codegen --load-storage=.auth/state.json $PP_BASE_URL"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^20.14.0",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.5.0"
+  }
+}
