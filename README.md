@@ -93,3 +93,15 @@ run until Rose confirms what it mirrors and whether it's reversible.
 Not wired up yet. Once the suite is stable against testbox, add a GitHub
 Actions workflow running `npm test` on push/PR (ask if you want this scaffolded
 now vs. once there's real coverage).
+
+## Test plan from the Ejara Automation Tool
+
+The test plan is kept in the Ejara Automation Tool; this repo follows it.
+
+- Each test starts with its ID (`PP-AUTH-01 …`): the tool's cases keep it as their former ID, so results from the
+  tool's runner link to the cases. `npm run plan:apply -- <bundle.json>` (dry run; `--write` to apply) renames them to
+  the tool's TC IDs and writes `test-plan/` (generated, never edited by hand).
+- Runner results: when the tool's runner sets `EJARA_RESULTS_FILE`, `src/reporting/ejara-results.ts` writes one line
+  per test (final attempt).
+- `npm run test:unit` — unit tests (no browser). `npm run typecheck`. `ejara-automation.json` — what the tool reads.
+  `CLAUDE.md` — conventions for AI changes.
