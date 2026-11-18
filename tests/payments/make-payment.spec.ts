@@ -21,7 +21,7 @@ import { env } from '../../src/utils/env';
  */
 test.describe('Make Payment @smoke', () => {
   test.skip(
-    'happy path: Pay In with valid details reaches Review, submits after OTP, and shows Verified',
+    'PP-PAY-01 happy path: Pay In with valid details reaches Review, submits after OTP, and shows Verified',
     async ({ transactionsPage, makePaymentWizard }) => {
       // BLOCKED: needs a live run to confirm the Ant Design select interactions
       // (fillPaymentStep uses .fill() as a placeholder - antd comboboxes
@@ -49,7 +49,7 @@ test.describe('Make Payment @smoke', () => {
     }
   );
 
-  test.skip('Review step shows the exact irreversibility warning before submission', async () => {
+  test.skip('PP-PAY-02 Review step shows the exact irreversibility warning before submission', async () => {
     // Confirmed verbatim copy (screenshot): "Double-check the reference and
     // amount — payment records cannot be reversed." Asserted inside
     // confirmAndSubmit() above; kept here as a standalone case too since a
@@ -57,42 +57,42 @@ test.describe('Make Payment @smoke', () => {
     // successful submission.
   });
 
-  test.skip('Continue is disabled on step 1 until direction + username + email are filled', async () => {
+  test.skip('PP-PAY-03 Continue is disabled on step 1 until direction + username + email are filled', async () => {
     // INFERRED from screenshot sequence (button visibly disabled/grey before
     // fields filled, enabled after) - not yet confirmed which combination of
     // fields is the actual trigger (e.g. is email format validated?).
   });
 
-  test.skip('Review is disabled on step 2 until External Reference and Comment are filled', async () => {
+  test.skip('PP-PAY-04 Review is disabled on step 2 until External Reference and Comment are filled', async () => {
     // INFERRED same way as above (screenshot showed Review greyed out with
     // those two fields empty, enabled once filled in a later screenshot).
   });
 
-  test.skip('OTP step-up: incorrect code on Make Payment is rejected and no transaction is created', async () => {
+  test.skip('PP-PAY-05 OTP step-up: incorrect code on Make Payment is rejected and no transaction is created', async () => {
     // INFERRED - mirrors the login OTP asymmetry (testbox permissive, prod
     // must reject). Needs confirmation this challenge behaves the same way,
     // and needs a way to verify "no transaction created" (e.g. check
     // Transactions table count before/after).
   });
 
-  test.skip('Pay Out direction shows the same step 2/3 fields as Pay In', async () => {
+  test.skip('PP-PAY-06 Pay Out direction shows the same step 2/3 fields as Pay In', async () => {
     // Only Pay In was demoed in the screenshots. Confirm Pay Out doesn't add
     // extra required fields (e.g. destination account details) before
     // assuming the fillPaymentStep() shape covers both directions.
   });
 
-  test.skip('"This is a payment voucher" checkbox changes step 3 Review/behavior', async () => {
+  test.skip('PP-PAY-07 "This is a payment voucher" checkbox changes step 3 Review/behavior', async () => {
     // Checkbox exists (screenshot) but its effect is entirely unconfirmed.
   });
 
-  test.skip('amount below/above the country-provider min/max is rejected with a clear error', async () => {
+  test.skip('PP-PAY-08 amount below/above the country-provider min/max is rejected with a clear error', async () => {
     // INFERRED - Country Providers config sets Min/Max Amount per config
     // (see docs/inferred-spec.md, Country Providers module). Needs a known
     // config's bounds to test meaningfully (e.g. from the Country Providers
     // table) plus confirmation of the actual error copy/behavior.
   });
 
-  test.skip('a successful payment appears in the Transactions table with matching amount/reference', async () => {
+  test.skip('PP-PAY-09 a successful payment appears in the Transactions table with matching amount/reference', async () => {
     // Cross-module check tying Make Payment to TransactionsPage - valuable
     // end-to-end case once individual steps are confirmed working.
   });

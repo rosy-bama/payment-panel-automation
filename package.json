@@ -10,7 +10,10 @@
     "test:smoke": "playwright test --grep @smoke",
     "test:auth": "playwright test tests/auth",
     "report": "playwright show-report",
-    "codegen": "playwright codegen --load-storage=.auth/state.json $PP_BASE_URL"
+    "codegen": "playwright codegen --load-storage=.auth/state.json $PP_BASE_URL",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "playwright test -c playwright.unit.config.ts",
+    "plan:apply": "node --no-warnings scripts/apply-plan.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

@@ -11,7 +11,12 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 2 : 1,
-  reporter: [['html', { open: 'never' }], ['list']],
+  reporter: [
+    ['html', { open: 'never' }],
+    ['list'],
+    // Results for the Ejara Automation Tool runner, only when it runs the tests.
+    ...(process.env.EJARA_RESULTS_FILE ? ([['./src/reporting/ejara-results.ts']] as const) : []),
+  ],
 
   use: {
     baseURL: process.env.PP_BASE_URL,

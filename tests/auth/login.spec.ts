@@ -10,7 +10,7 @@ import { env } from '../../src/utils/env';
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe('Authentication @smoke', () => {
-  test('valid username + password + testbox OTP logs in successfully', async ({
+  test('PP-AUTH-01 valid username + password + testbox OTP logs in successfully', async ({
     loginPage,
     nav,
   }) => {
@@ -22,7 +22,7 @@ test.describe('Authentication @smoke', () => {
     await expect(nav.welcomeText).toBeVisible();
   });
 
-  test('invalid password shows an error and does not log in', async ({ page, loginPage }) => {
+  test('PP-AUTH-02 invalid password shows an error and does not log in', async ({ page, loginPage }) => {
     await loginPage.goto();
     await loginPage.login(env.username, 'clearly-wrong-password');
 
@@ -34,7 +34,7 @@ test.describe('Authentication @smoke', () => {
   });
 
   test.skip(
-    'production OTP must reject an arbitrary/incorrect authenticator code (testbox intentionally allows any 6 digits)',
+    'PP-AUTH-03 production OTP must reject an arbitrary/incorrect authenticator code (testbox intentionally allows any 6 digits)',
     async () => {
       // BLOCKED: needs a production/staging target + a real authenticator
       // enrollment to test meaningfully. Rose flagged this asymmetry
@@ -43,17 +43,17 @@ test.describe('Authentication @smoke', () => {
     }
   );
 
-  test.skip('OTP "Go back" returns to the username/password step', async () => {
+  test.skip('PP-AUTH-04 OTP "Go back" returns to the username/password step', async () => {
     // Confirmed the link exists (loginPage.otpGoBackLink) - behavior (does it
     // clear the password field? re-require OTP on retry?) not yet confirmed.
   });
 
-  test.skip('locks or rate-limits after repeated failed login attempts', async () => {
+  test.skip('PP-AUTH-05 locks or rate-limits after repeated failed login attempts', async () => {
     // INFERRED requirement, not confirmed. Common in fintech panels but needs
     // Rose/product confirmation before we assert specific thresholds or lockout copy.
   });
 
-  test.skip('language switcher toggles the sign-in screen to Français', async () => {
+  test.skip('PP-AUTH-06 language switcher toggles the sign-in screen to Français', async () => {
     // Confirmed the switcher offers English/Français (screenshot, 2026-09-09).
     // Not yet confirmed: does it persist across the OTP step and post-login,
     // or reset per session?
