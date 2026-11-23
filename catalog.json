@@ -6,6 +6,7 @@
     {
       "id": "countryProvidersPage",
       "name": "CountryProvidersPage",
+      "area": null,
       "className": "CountryProvidersPage",
       "file": "src/pages/CountryProvidersPage.ts",
       "description": "Confirmed from screenshot (2026-09-09): four stat cards (Total Configs, Live Configs [with \"N in test\" subtext], Countries, Providers), filter pills (All/Pay in/Pay out), Country/Provider filter dropdowns, a \"Switch Live\" button (INFERRED - likely toggles the table between Live and Test environment rows; unconfirmed), \"+ New Config\", and a wide table (Id, Country/Provider, Payment Mode, Transaction Type, Customer Type, Environment [Live/Test badge], Fees, Ejara Fees, Min/Max Amount, Feature, Gateway, Automatic, Require OTP, Date Created/Updated). \"New Country Provider\" drawer is the richest form in the app: Country*, Payment Provider*, Payment Mode*, Transaction Type*, Feature (optional), Customer Type (optional), Payment Gateway* (free text, e.g. \"account_to_wallet\"), Fees Policy* + Fees Value*, Ejara Fees Policy* + Ejara Fees Value*, Min/Max Amount (optional), OTP Code USSD (optional), Payment USSD (optional), and three toggles: \"Require OTP\" (customer must enter OTP to complete payment), \"Require Browser\" (payment flow needs a browser - 3-DS/redirect), \"Sync with Nellys Coin\". This form controls live money-movement rules per country/provider - highest-risk config screen in the app. See docs/inferred-spec.md, Country Providers module.",
@@ -233,6 +234,7 @@
     {
       "id": "dashboardPage",
       "name": "DashboardPage",
+      "area": null,
       "className": "DashboardPage",
       "file": "src/pages/DashboardPage.ts",
       "description": "Confirmed from screenshot (2026-09-09): Dashboard shows an \"in development\" banner (live metrics not wired up) listing what's coming next, and an \"Available sections\" grid of cards linking to the parts that already work: Transactions (Overview), Accounts (Ejara Pay Admin), Transactions (Ejara Pay Admin) [sic - duplicate label, two different destinations per the screenshot], Policies / Providers / Country Providers / Payment Mode (Settings). \"Accounts\" isn't visible in the sidebar (lives under the collapsed \"Ejara Pay Admin\" group) - see docs/inferred-spec.md open questions.",
@@ -313,6 +315,7 @@
     {
       "id": "loginPage",
       "name": "LoginPage",
+      "area": null,
       "className": "LoginPage",
       "file": "src/pages/LoginPage.ts",
       "description": "Confirmed from screenshots (2026-09-09): - Sign-in screen: \"Username\" / \"Password\" fields (Ant Design Form.Item style, red required asterisk), placeholder \"Enter your username\", a password show/hide toggle, and a \"Sign in\" button. - OTP screen: heading \"Check your Authenticator App\" (this is TOTP via an authenticator app, not SMS/email), subtext \"Enter the 6-digit code below to complete your sign in.\", a 6-box code input (3-3 split with a dash), a \"Go back\" link, and a \"Verify and sign in\" button. - Language switcher (top-right) offers English and Français. The app is a React SPA (Vite build, Ant Design + Chakra UI bundles) - there is no server-rendered HTML to inspect via \"view source\"; only the mounted <div id=\"root\"> content (screenshot or DevTools \"Inspect Element\") reflects real fields. Locators prefer placeholder/role/label/text (stable regardless of framework) over CSS classes. Still unconfirmed: exact password field placeholder (masked in the screenshot), the 6 OTP box inputs' actual DOM attributes (see src/utils/otp.ts), and error message copy.",
@@ -421,6 +424,7 @@
     {
       "id": "makePaymentWizard",
       "name": "MakePaymentWizard",
+      "area": null,
       "className": "MakePaymentWizard",
       "file": "src/pages/MakePaymentWizard.ts",
       "description": "The \"Make Payment\" modal, opened from TransactionsPage.makePaymentButton. Confirmed from screenshots (2026-09-09) as a 3-step wizard: User -> Payment -> Review, followed by an OTP step-up challenge (\"Confirm it's you\" - same 6-box authenticator code as login) before the payment is actually submitted, then a \"Verified / Processing your request...\" loading state. This is the highest-risk flow in the app (it moves real money), so: - the Review step's irreversibility warning is asserted verbatim where seen, not paraphrased; - every field below is Confirmed present/labeled from the screenshot, but validation rules (which combinations are valid, min/max amount, exactly which fields are required for Pay Out vs Pay In) are NOT confirmed - see docs/inferred-spec.md, Make Payment module.",
@@ -659,6 +663,7 @@
     {
       "id": "nav",
       "name": "NavSidebar",
+      "area": null,
       "className": "NavSidebar",
       "file": "src/pages/NavSidebar.ts",
       "description": "Confirmed from Dashboard screenshot (2026-09-09): left sidebar has an \"Overview\" group (Dashboard, Transactions), a collapsible \"Ejara Pay Admin\" group (collapsed by default - contents unconfirmed, but the Dashboard's \"Accounts\" card suggests it holds at least an Accounts view), and a \"Settings\" group (Policies, Providers, Country Providers, Payment Mode). Top bar: sidebar collapse toggle, \"Welcome back, <name>\", global search (\"Search panel... ⌘K\"), notification bell, user avatar (initials).",
@@ -746,6 +751,7 @@
     {
       "id": "paymentModePage",
       "name": "PaymentModePage",
+      "area": null,
       "className": "PaymentModePage",
       "file": "src/pages/PaymentModePage.ts",
       "description": "Confirmed from screenshot (2026-09-09): filter pills (All/Active/Inactive), search by code or description, \"+ New Payment Mode\", table (Id, Code, Description, Payment Type, Funding Source [Bank/Mobile Money badge], Status, Created By, Updated By, Date Created, Date Updated). \"New Payment Mode\" drawer requires BOTH English and French titles/descriptions (Title (EN)*, Title (FR)*, Description (EN), Description (FR)) - confirms bilingual data entry is a first-class concern here, worth its own test (e.g. cannot submit with only one language filled). Also has the same \"Sync with Nellys Coin\" toggle seen on Providers/Country Providers.",
@@ -883,6 +889,7 @@
     {
       "id": "policiesPage",
       "name": "PoliciesPage",
+      "area": null,
       "className": "PoliciesPage",
       "file": "src/pages/PoliciesPage.ts",
       "description": "Confirmed from screenshot (2026-09-09): three sub-tabs (Payout Approval Policy / Payout Abuse Policy / Payin Abuse Policy), a \"Filter by feature\" dropdown, \"+ New Policy\", and a table (Id, Created At, From, To, Required Approvals, Feature, Status, Created By, Updated By, Updated At). The \"New Payout Approval Policy\" drawer has From* and To* (numeric), Required Approvals* (numeric), Feature* (dropdown). These policies gate payout amounts behind N approvals per feature/amount band - high business risk if wrong, since it's literally fraud/compliance control. See docs/inferred-spec.md, Policies module.",
@@ -985,6 +992,7 @@
     {
       "id": "providersPage",
       "name": "ProvidersPage",
+      "area": null,
       "className": "ProvidersPage",
       "file": "src/pages/ProvidersPage.ts",
       "description": "Confirmed from screenshot (2026-09-09): filter pills (All/Active/ Inactive with counts), search by name, \"+ New Provider\", table (Id, Provider Name, Status, Description, Created By, Updated By, Date Created, Date Updated). \"New Provider\" drawer: Name*, Description*, an \"Active\" toggle (ON by default - \"Provider is available for transactions right away\"), and a \"Sync with Nellys Coin\" toggle (OFF by default). Nellys Coin appears to be a related Ejara product these config screens can mirror into - unconfirmed what breaks if left on/off; treat as OFF in tests unless told otherwise (see docs/inferred-spec.md open questions).",
@@ -1087,6 +1095,7 @@
     {
       "id": "transactionsPage",
       "name": "TransactionsPage",
+      "area": null,
       "className": "TransactionsPage",
       "file": "src/pages/TransactionsPage.ts",
       "description": "Confirmed from screenshot (2026-09-09). Header: \"All-time global transactions across every region and currency\". Controls: date grouping (\"Daily\"), quick ranges (7d/30d/60d/90d), a calendar picker, \"+ Make Payment\", and a refresh icon. Five all-time stat cards. Status filter pills with live counts: All / Initiated / Confirmed / Rejected / Awaiting Approval. Table columns: Id, Created At, Username (+ phone + country), Status, Transaction Type (Pay in/Pay out), Paid Amount, Raw Amount, Global Fees, Provider, Payment Mode, Feature, Internal Ref. Paginated, 10/page shown, page-size selector.",

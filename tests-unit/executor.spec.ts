@@ -16,6 +16,7 @@ const catalog: Catalog = {
     {
       id: 'makePaymentWizard',
       name: 'MakePaymentWizard',
+      area: null,
       className: 'MakePaymentWizard',
       file: 'src/pages/MakePaymentWizard.ts',
       description: null,
