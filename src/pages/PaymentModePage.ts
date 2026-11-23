@@ -31,6 +31,7 @@ export class PaymentModePage extends BasePage {
   readonly descriptionEnInput: Locator;
   readonly descriptionFrInput: Locator;
   readonly syncWithNellysCoinToggle: Locator;
+  /** Creates a payment mode: changes the panel's configuration (PP_ALLOW_SETTINGS_CHANGES=true, testbox only). @changesState */
   readonly createPaymentModeButton: Locator;
 
   constructor(page: Page) {

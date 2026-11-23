@@ -18,4 +18,8 @@ export const env = {
   password: required('PP_PASSWORD'),
   otp: process.env.PP_OTP ?? '123456',
   targetEnv: (process.env.PP_ENV ?? 'testbox') as 'testbox' | 'staging' | 'production',
+  /** Payments made by steps of the Ejara Automation Tool (Make payment: irreversible). Testbox only. */
+  allowPayments: process.env.PP_ALLOW_PAYMENTS === 'true',
+  /** New providers, policies, payment modes made by steps of the Ejara Automation Tool. Testbox only. */
+  allowSettingsChanges: process.env.PP_ALLOW_SETTINGS_CHANGES === 'true',
 };

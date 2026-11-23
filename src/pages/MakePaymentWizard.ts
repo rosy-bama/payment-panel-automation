@@ -130,6 +130,7 @@ export class MakePaymentWizard extends BasePage {
     await this.reviewButton.click();
   }
 
+  /** Submits the payment with the OTP: irreversible, real money (PP_ALLOW_PAYMENTS=true, testbox only). @movesMoney */
   async confirmAndSubmit(otp: string) {
     await expect(this.irreversibleWarning).toBeVisible();
     await this.makePaymentButton.click();

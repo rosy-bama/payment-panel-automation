@@ -13,7 +13,9 @@
     "codegen": "playwright codegen --load-storage=.auth/state.json $PP_BASE_URL",
     "typecheck": "tsc --noEmit",
     "test:unit": "playwright test -c playwright.unit.config.ts",
-    "plan:apply": "node --no-warnings scripts/apply-plan.ts"
+    "plan:apply": "node --no-warnings scripts/apply-plan.ts",
+    "catalog": "node --no-warnings scripts/catalog.ts",
+    "catalog:check": "node --no-warnings scripts/catalog.ts --check"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",

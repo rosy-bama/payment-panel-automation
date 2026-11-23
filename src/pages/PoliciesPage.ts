@@ -26,6 +26,7 @@ export class PoliciesPage extends BasePage {
   readonly toInput: Locator;
   readonly requiredApprovalsInput: Locator;
   readonly featureSelect: Locator;
+  /** Creates a payout policy: changes the panel's configuration (PP_ALLOW_SETTINGS_CHANGES=true, testbox only). @changesState */
   readonly createPolicyButton: Locator;
 
   constructor(page: Page) {

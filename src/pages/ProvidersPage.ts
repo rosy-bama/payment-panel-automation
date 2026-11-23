@@ -26,6 +26,7 @@ export class ProvidersPage extends BasePage {
   readonly descriptionInput: Locator;
   readonly activeToggle: Locator;
   readonly syncWithNellysCoinToggle: Locator;
+  /** Creates a provider: changes the panel's configuration (PP_ALLOW_SETTINGS_CHANGES=true, testbox only). @changesState */
   readonly createProviderButton: Locator;
 
   constructor(page: Page) {
